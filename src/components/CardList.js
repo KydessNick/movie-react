@@ -1,10 +1,10 @@
 import React from 'react'
-import { noPosterImage } from '../poster.js'
 import { format } from 'date-fns'
 import { enGB } from 'date-fns/locale'
-import { Rate} from 'antd'
-function CardList({array, sendFetchForRate}){
-    
+import { Rate } from 'antd'
+
+import { noPosterImage } from '../../public/poster'
+function CardList({ array, sendFetchForRate }) {
     function makeLessString(stringAnn, stringTitle) {
         let maxLetters
         if (stringTitle.length < 15) {
@@ -23,7 +23,8 @@ function CardList({array, sendFetchForRate}){
         return stringAnn
     }
 
-    return (array.length !== 0 &&
+    return (
+        array.length !== 0 &&
         array.map((item) => (
             <article key={item.id} className="card">
                 <div className="card-image">
@@ -32,8 +33,7 @@ function CardList({array, sendFetchForRate}){
                         src={
                             item.poster_path === null
                                 ? noPosterImage
-                                : 'http://image.tmdb.org/t/p/original/' +
-                                  item.poster_path
+                                : 'http://image.tmdb.org/t/p/original/' + item.poster_path
                         }
                         alt="постер к фильму"
                     ></img>
@@ -45,11 +45,9 @@ function CardList({array, sendFetchForRate}){
                             className={
                                 item.vote_average >= 3 && item.vote_average < 5
                                     ? 'movie-title-rate__circle orange'
-                                    : item.vote_average >= 5 &&
-                                      item.vote_average <= 7
+                                    : item.vote_average >= 5 && item.vote_average <= 7
                                     ? 'movie-title-rate__circle yellow'
-                                    : item.vote_average > 7 &&
-                                      item.vote_average <= 10
+                                    : item.vote_average > 7 && item.vote_average <= 10
                                     ? 'movie-title-rate__circle green'
                                     : 'movie-title-rate__circle red'
                             }
@@ -65,17 +63,11 @@ function CardList({array, sendFetchForRate}){
                             : null}
                     </div>
                     <div className="card-content__genre">Жанр</div>
-                    <div className="card-content__annotation">
-                        {makeLessString(item.overview, item.title)}
-                    </div>
-                    <Rate
-                        count="10"
-                        allowHalf="true"
-                        onChange={(value) => sendFetchForRate(value, item.id)}
-                    ></Rate>
+                    <div className="card-content__annotation">{makeLessString(item.overview, item.title)}</div>
+                    <Rate count="10" allowHalf="true" onChange={(value) => sendFetchForRate(value, item.id)}></Rate>
                 </div>
             </article>
-        )))
-        
+        ))
+    )
 }
 export default CardList

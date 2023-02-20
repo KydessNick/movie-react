@@ -2,11 +2,12 @@ import { React, useState, useEffect } from 'react'
 import { Spin, Alert, Tabs } from 'antd'
 import { debounce } from 'lodash'
 import { Offline, Online } from 'react-detect-offline'
+
+import checkGuestSession from '../checkGuestSession'
+
 import CardList from './CardList'
 import PaginationMovies from './Pagination'
 import SearchInput from './SearchInput'
-import checkGuestSession from './checkGuestSession'
-
 function App() {
     const [error, setError] = useState(null)
     const [nameMovies, setNameMovies] = useState('')

@@ -4,22 +4,17 @@ body {
     padding: 0;
 }
 body{
-    
     background-color: #090909;
     font-family: 'Inter', sans-serif;
     color: #f8eee9;
-   
 }
 #root{
     position: relative;
     max-width: 100vw;
 }
 .wrapper{
-    
     margin: 0 auto;
-
     width:1110px;
-   
 }
 .search{
     font-family: 'Inter', sans-serif;
@@ -30,7 +25,6 @@ body{
     flex-direction: row;
     justify-content: space-around;
     background-color:  #090909;
-     /* border:2px solid rgb(69, 67, 67); */
      box-shadow:  33px 33px 43px #050505,
      -33px -33px 43px #0d0d0d;
     width:451px;
@@ -38,7 +32,6 @@ body{
    margin: 18px;
    margin-right: 70px;
 }
-
 .card-content{
     font-size: 0.8rem;
 position: relative;
@@ -61,10 +54,7 @@ text-align: center;
 padding-top:5px;
 }
 .movie-title-rate__circle.red{
-
 border: 2px solid #E90000;
-
-
 }
 .movie-title-rate__circle.orange{
     border: 2px solid  #E97E00;
@@ -109,10 +99,8 @@ margin-bottom: 7px;
     background-color: #f8eee9;
     border-color: #c84f34;
 }
-.ant-pagination{
-   
+.ant-pagination{ 
     margin: 0 auto; 
-
 }
 li.ant-pagination-item{
      color:#f8eee9;
@@ -122,7 +110,6 @@ li.ant-pagination-item{
 .ant-pagination-item-active a{
     color: black !important;
 }
-
 .ant-pagination .ant-pagination-item a {
     color:#f8eee9;
 }
@@ -131,7 +118,6 @@ li.ant-pagination-item{
 }
 li.ant-pagination-options {
     display: none !important;
-
 }
 .ant-rate-star.ant-rate-star-zero>div> .ant-rate-star-second{
     color: gray !important;
