@@ -17,7 +17,6 @@ function Genre({ genres, idsArray }) {
         </span>
     ))
 }
-
 export default Genre
 Genre.propTypes = {
     genres: PropTypes.array,

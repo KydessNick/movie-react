@@ -112,7 +112,6 @@ margin-bottom: 7px;
   .card-content__genres::-webkit-scrollbar-thumb{
     background: #212022;
   }
-
 .card-content__genre{
     color: #cbc7c4;
     border: 1px solid #a8a5a3;

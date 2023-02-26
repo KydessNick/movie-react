@@ -5,6 +5,7 @@ import { Rate } from 'antd'
 import Genre from './Genre'
 import { noPosterImage } from '../poster'
 import PropTypes from 'prop-types'
+
 function CardList({ array, sendRateUpdateItems, genres }) {
     function makeLessString(stringAnn, stringTitle) {
         let maxLetters
