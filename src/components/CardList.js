@@ -2,17 +2,17 @@ import React from 'react'
 import { format } from 'date-fns'
 import { enGB } from 'date-fns/locale'
 import { Rate } from 'antd'
-
-import { noPosterImage } from '../../public/poster'
-function CardList({ array, sendFetchForRate }) {
+import Genre from './Genre'
+import { noPosterImage } from '../poster'
+function CardList({ array, sendRateUpdateItems, genres }) {
     function makeLessString(stringAnn, stringTitle) {
         let maxLetters
         if (stringTitle.length < 15) {
-            maxLetters = 170
+            maxLetters = 130
         } else if (stringTitle.length >= 15 && stringTitle.length < 35) {
-            maxLetters = 100
+            maxLetters = 90
         } else if (stringTitle.length >= 35) {
-            maxLetters = 30
+            maxLetters = 20
         }
         if (stringAnn.length > maxLetters) {
             let regexp = /[\s.,(?!)]/g
@@ -22,7 +22,6 @@ function CardList({ array, sendFetchForRate }) {
         }
         return stringAnn
     }
-
     return (
         array.length !== 0 &&
         array.map((item) => (
@@ -62,9 +61,18 @@ function CardList({ array, sendFetchForRate }) {
                               })
                             : null}
                     </div>
-                    <div className="card-content__genre">Жанр</div>
+                    <div className="card-content__genres">
+                        <Genre genres={genres} idsArray={item.genre_ids} />
+                    </div>
                     <div className="card-content__annotation">{makeLessString(item.overview, item.title)}</div>
-                    <Rate count="10" allowHalf="true" onChange={(value) => sendFetchForRate(value, item.id)}></Rate>
+                    <Rate
+                        count="10"
+                        allowHalf="true"
+                        onChange={(value) => {
+                            sendRateUpdateItems(value, item.id)
+                        }}
+                        value={item.rating}
+                    ></Rate>
                 </div>
             </article>
         ))

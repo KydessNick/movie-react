@@ -6,7 +6,7 @@ function checkGuestSession(setGuestId, keyAPI) {
         let timeId = localStorage.getItem('guestIdTime')
         let limitTime = 24 * 3600 * 1000
         if (+new Date() - timeId > limitTime) {
-            createGuestSession()
+            createGuestSession(setGuestId, keyAPI)
         } else {
             setGuestId(localStorage.getItem('guestSessionId'))
         }
