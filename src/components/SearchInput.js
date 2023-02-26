@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Input } from 'antd'
 function SearchInput({ nameMovies, setNameMovies }) {
     return (
@@ -13,5 +14,8 @@ function SearchInput({ nameMovies, setNameMovies }) {
         />
     )
 }
-
 export default SearchInput
+SearchInput.propTypes = {
+    nameMovies: PropTypes.string,
+    setNameMovies: PropTypes.func.isRequired,
+}

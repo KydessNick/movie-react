@@ -4,6 +4,7 @@ import { enGB } from 'date-fns/locale'
 import { Rate } from 'antd'
 import Genre from './Genre'
 import { noPosterImage } from '../poster'
+import PropTypes from 'prop-types'
 function CardList({ array, sendRateUpdateItems, genres }) {
     function makeLessString(stringAnn, stringTitle) {
         let maxLetters
@@ -79,3 +80,8 @@ function CardList({ array, sendRateUpdateItems, genres }) {
     )
 }
 export default CardList
+CardList.propTypes = {
+    array: PropTypes.array,
+    sendRateUpdateItems: PropTypes.func.isRequired,
+    genres: PropTypes.array,
+}

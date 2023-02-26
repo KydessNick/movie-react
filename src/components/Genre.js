@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 function Genre({ genres, idsArray }) {
     let genresOneMovie = []
     if (idsArray.length !== 0) {
@@ -18,3 +19,7 @@ function Genre({ genres, idsArray }) {
 }
 
 export default Genre
+Genre.propTypes = {
+    genres: PropTypes.array,
+    idsArray: PropTypes.array,
+}

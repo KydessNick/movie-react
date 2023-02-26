@@ -1,5 +1,6 @@
 import React from 'react'
 import { Pagination } from 'antd'
+import PropTypes from 'prop-types'
 function PaginationMovies({ page, pageQtty, setPage }) {
     return (
         <Pagination
@@ -13,3 +14,8 @@ function PaginationMovies({ page, pageQtty, setPage }) {
     )
 }
 export default PaginationMovies
+PaginationMovies.propTypes = {
+    page: PropTypes.number,
+    pageQtty: PropTypes.number,
+    setPage: PropTypes.func.isRequired,
+}

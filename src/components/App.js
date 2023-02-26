@@ -3,7 +3,7 @@ import { Spin, Alert, Tabs } from 'antd'
 import { debounce } from 'lodash'
 import checkGuestSession from '../checkGuestSession'
 import CardList from './CardList'
-import PaginationMovies from './Pagination'
+import PaginationMovies from './PaginationMovies'
 import SearchInput from './SearchInput'
 
 function App() {
