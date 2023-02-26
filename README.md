@@ -4,5 +4,5 @@
 <div>Для реализации интерфейса использовалась библиотека готовых компонентов Antd.<a href="https://ant.design"></div>
 <div>Также, заимствована функция дебоунса из lodash.<a href="https://lodash.com/docs/4.17.15#debounce"></div>
 
-<a href = "">Cсылка на приложение</a>
+<a href = "https://moviesapp-neon.vercel.app/">Cсылка на приложение</a>
 <div></div>
