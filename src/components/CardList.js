@@ -1,29 +1,13 @@
 import React from 'react'
 import { format } from 'date-fns'
 import { enGB } from 'date-fns/locale'
-import { Rate } from 'antd'
+import RateStars from './RateStars'
 import Genre from './Genre'
 import { noPosterImage } from '../poster'
 import PropTypes from 'prop-types'
+import makeLessString from '../assets/makeLessString'
 
-function CardList({ array, sendRateUpdateItems, genres }) {
-    function makeLessString(stringAnn, stringTitle) {
-        let maxLetters
-        if (stringTitle.length < 15) {
-            maxLetters = 130
-        } else if (stringTitle.length >= 15 && stringTitle.length < 35) {
-            maxLetters = 90
-        } else if (stringTitle.length >= 35) {
-            maxLetters = 20
-        }
-        if (stringAnn.length > maxLetters) {
-            let regexp = /[\s.,(?!)]/g
-            regexp.lastIndex = maxLetters
-            regexp.exec(stringAnn)
-            return stringAnn.slice(0, regexp.lastIndex) + '...'
-        }
-        return stringAnn
-    }
+function CardList({ array, sendRate, genres }) {
     return (
         array.length !== 0 &&
         array.map((item) => (
@@ -67,14 +51,7 @@ function CardList({ array, sendRateUpdateItems, genres }) {
                         <Genre genres={genres} idsArray={item.genre_ids} />
                     </div>
                     <div className="card-content__annotation">{makeLessString(item.overview, item.title)}</div>
-                    <Rate
-                        count="10"
-                        allowHalf="true"
-                        onChange={(value) => {
-                            sendRateUpdateItems(value, item.id)
-                        }}
-                        value={item.rating}
-                    ></Rate>
+                    <RateStars sendRate={sendRate} id={item.id} rating={item.rating} />
                 </div>
             </article>
         ))
@@ -83,6 +60,7 @@ function CardList({ array, sendRateUpdateItems, genres }) {
 export default CardList
 CardList.propTypes = {
     array: PropTypes.array,
-    sendRateUpdateItems: PropTypes.func.isRequired,
+    sendRate: PropTypes.func.isRequired,
     genres: PropTypes.array,
+    checkRate: PropTypes.func,
 }
