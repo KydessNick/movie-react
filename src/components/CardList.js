@@ -8,9 +8,8 @@ import PropTypes from 'prop-types'
 import makeLessString from '../assets/makeLessString'
 
 function CardList({ array, sendRate, genres }) {
-    return (
-        array.length !== 0 &&
-        array.map((item) => (
+    if (array !== undefined)
+        return array.map((item) => (
             <article key={item.id} className="card">
                 <div className="card-image">
                     <img
@@ -55,7 +54,6 @@ function CardList({ array, sendRate, genres }) {
                 </div>
             </article>
         ))
-    )
 }
 export default CardList
 CardList.propTypes = {

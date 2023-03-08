@@ -1,11 +1,18 @@
 import { React, useState, useEffect } from 'react'
 import { Spin, Alert, Tabs } from 'antd'
 import { debounce } from 'lodash'
-import checkGuestSessionLS from '../assets/localeStorageFunctions'
+import checkGuestSessionLS from '../assets/checkGuestSessionLS'
+import saveGuestSessionLS from '../assets/saveGuestSessionLS'
 import CardList from './CardList'
 import PaginationMovies from './PaginationMovies'
 import SearchInput from './SearchInput'
-import { getRatedMoviesAPI, sendRateAPI, getGenresIdAPI, searchMoviesAPI } from '../movieAPIservices/servicesFunctions'
+import {
+    getRatedMoviesAPI,
+    sendRateAPI,
+    getGenresIdAPI,
+    searchMoviesAPI,
+    createGuestSessionAPI,
+} from '../movieAPIservices/servicesFunctions'
 
 function App() {
     const [isOnline, setIsOnline] = useState(true)
@@ -66,16 +73,13 @@ function App() {
             }
         )
     }
-    function checkGuestSession() {
-        checkGuestSessionLS().then(
-            (res) => {
-                setGuestId(res)
-            },
-            (error) => {
-                setIsSearch(false)
-                setError(error)
-            }
-        )
+    async function checkGuestSession() {
+        let id = await checkGuestSessionLS()
+        if (id === 'notID') {
+            id = await createGuestSessionAPI()
+            saveGuestSessionLS(id)
+        }
+        setGuestId(id)
     }
     useEffect(() => {
         if (navigator.onLine) {
@@ -83,7 +87,7 @@ function App() {
             checkGuestSession()
             if (genres.length === 0) {
                 getGenresId()
-            } else if (nameMovies && nameMovies.length !== 0 && genres.length !== 0) {
+            } else if (nameMovies && nameMovies.length !== 0 && genres.length !== 0 && guestId !== undefined) {
                 setIsSearch(true)
                 debounceSearchMovies()
             }

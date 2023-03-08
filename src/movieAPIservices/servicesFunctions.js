@@ -34,7 +34,7 @@ async function searchMoviesAPI(page, nameMovies, guestId) {
 }
 async function createGuestSessionAPI() {
     const url = `${baseURL}/authentication/guest_session/new?api_key=${keyAPI}`
-    const res = await fetch(url)
+    const res = await sendFetch(url)
     return res.guest_session_id
 }
 export {
